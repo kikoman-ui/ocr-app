@@ -52,7 +52,7 @@
       
       <v-spacer />
 
-    <v-btn @click="$auth.logout()">Logout</v-btn>
+    <v-btn v-if="$auth.loggedIn" @click="$auth.logout()">Logout</v-btn>
 
       <v-btn
         icon

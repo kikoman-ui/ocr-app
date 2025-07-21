@@ -78,6 +78,7 @@ export default {
       scheme: 'oauth2',
       endpoints: {
         authorization: 'https://github.com/login/oauth/authorize',
+        token: 'https://github.com/login/oauth/access_token',
         userInfo: 'https://api.github.com/user'
       },
       token: {
@@ -85,7 +86,7 @@ export default {
         type: 'Bearer',
         maxAge: 1800
       },
-      responseType: 'token',
+      responseType: 'code',
       scope: ['read:user', 'user:email'],
       redirectUri: process.env.GITHUB_REDIRECT_URI || 'http://localhost:3000/auth/callback',
       codeChallengeMethod: ''

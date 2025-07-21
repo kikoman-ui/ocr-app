@@ -78,6 +78,11 @@
 
 <script>
 export default {
-  name: 'IndexPage'
+  name: 'IndexPage',
+  middleware: ['auth'],
+  mounted() {
+    // When the page mounts, redirect to /tesseract
+    this.$router.replace('/tesseract')
+  }
 }
 </script>
