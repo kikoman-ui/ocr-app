@@ -50,12 +50,12 @@ export default {
     login: '/auth/login',         // not authenticated
     logout: '/auth/login',        // after logout
     callback: '/auth/callback',   // OAuth callback
-    home: '/auth/tesseract'       // after login success
+    home: '/tesseract'       // after login success
   },
   autoFetchUser: true,
   strategies: {
     google: {
-      clientId: '566155338518-pkstulhr6f8rftnv0mleaff9946v5urh.apps.googleusercontent.com',
+      clientId: process.env.GOOGLE_CLIENT_ID,
       scheme: 'oauth2',
       endpoints: {
         authorization: 'https://accounts.google.com/o/oauth2/auth',
@@ -73,8 +73,8 @@ export default {
     },
 
     github: {
-      clientId: '4300781d6ff4dc5f87003242c8f578393d0dd2d3',
-      clientSecret: '', // only needed for server-side flow (we’re doing client-side implicit)
+      clientId: process.env.GITHUB_CLIENT_ID,
+      clientSecret: process.env.GITHUB_CLIENT_SECRET, // only needed for server-side flow (we’re doing client-side implicit)
       scheme: 'oauth2',
       endpoints: {
         authorization: 'https://github.com/login/oauth/authorize',
@@ -104,7 +104,7 @@ export default {
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
     theme: {
-      dark: true,
+      dark: false,
       themes: {
         dark: {
           primary: colors.blue.darken2,
