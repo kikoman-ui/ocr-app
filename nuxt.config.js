@@ -86,7 +86,7 @@ export default {
         },
         responseType: 'token',
         scope: ['public_profile', 'email'],
-        redirectUri: 'http://localhost:3000/auth/callback',
+        redirectUri: process.env.FACEBOOK_REDIRECT_URI || 'http://localhost:3000/auth/callback',
         codeChallengeMethod: ''
       }
     }
