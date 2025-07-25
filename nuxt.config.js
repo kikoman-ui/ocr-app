@@ -46,53 +46,51 @@ export default {
     '@nuxtjs/auth-next'
   ],
   auth: {
-  redirect: {
-    login: '/auth/login',         // not authenticated
-    logout: '/auth/login',        // after logout
-    callback: '/auth/callback',   // OAuth callback
-    home: '/tesseract'       // after login success
-  },
-  autoFetchUser: true,
-  strategies: {
-    google: {
-      clientId: process.env.GOOGLE_CLIENT_ID,
-      scheme: 'oauth2',
-      endpoints: {
-        authorization: 'https://accounts.google.com/o/oauth2/auth',
-        userInfo: 'https://www.googleapis.com/oauth2/v3/userinfo'
-      },
-      token: {
-        property: 'access_token',
-        type: 'Bearer',
-        maxAge: 1800
-      },
-      responseType: 'token id_token',
-      scope: ['openid', 'profile', 'email'],
-      redirectUri: process.env.GOOGLE_REDIRECT_URI || 'http://localhost:3000/auth/callback',
-      codeChallengeMethod: ''
+    redirect: {
+      login: '/auth/login',         // not authenticated
+      logout: '/auth/login',        // after logout
+      callback: '/auth/callback',   // OAuth callback
+      home: '/tesseract'       // after login success
     },
+    autoFetchUser: true,
+    strategies: {
+      google: {
+        clientId: process.env.GOOGLE_CLIENT_ID,
+        scheme: 'oauth2',
+        endpoints: {
+          authorization: 'https://accounts.google.com/o/oauth2/auth',
+          userInfo: 'https://www.googleapis.com/oauth2/v3/userinfo'
+        },
+        token: {
+          property: 'access_token',
+          type: 'Bearer',
+          maxAge: 1800
+        },
+        responseType: 'token id_token',
+        scope: ['profile', 'email'],
+        redirectUri: process.env.GOOGLE_REDIRECT_URI || 'http://localhost:3000/auth/callback',
+        codeChallengeMethod: ''
+      },
 
-    github: {
-      clientId: process.env.GITHUB_CLIENT_ID,
-      clientSecret: process.env.GITHUB_CLIENT_SECRET, // only needed for server-side flow (we’re doing client-side implicit)
-      scheme: 'oauth2',
-      endpoints: {
-        authorization: 'https://github.com/login/oauth/authorize',
-        token: 'https://github.com/login/oauth/access_token',
-        userInfo: 'https://api.github.com/user'
-      },
-      token: {
-        property: 'access_token',
-        type: 'Bearer',
-        maxAge: 1800
-      },
-      responseType: 'code',
-      scope: ['read:user', 'user:email'],
-      redirectUri: process.env.GITHUB_REDIRECT_URI || 'http://localhost:3000/auth/callback',
-      codeChallengeMethod: ''
+      facebook: {
+        clientId: process.env.FACEBOOK_CLIENT_ID,
+        scheme: 'oauth2',
+        endpoints: {
+          authorization: 'https://www.facebook.com/v18.0/dialog/oauth',
+          userInfo: 'https://graph.facebook.com/v18.0/me?fields=id,name,email,picture'
+        },
+        token: {
+          property: 'access_token',
+          type: 'Bearer',
+          maxAge: 3600
+        },
+        responseType: 'token',
+        scope: ['public_profile', 'email'],
+        redirectUri: 'http://localhost:3000/auth/callback',
+        codeChallengeMethod: ''
+      }
     }
-  }
-},
+  },
 
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios

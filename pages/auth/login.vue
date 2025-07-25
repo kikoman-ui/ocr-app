@@ -10,21 +10,8 @@
       </div>
 
       <!-- Username & Password -->
-      <v-text-field
-        label="Username"
-        prepend-inner-icon="mdi-account"
-        v-model="username"
-        outlined
-        dense
-      />
-      <v-text-field
-        label="Password"
-        type="password"
-        prepend-inner-icon="mdi-lock"
-        v-model="password"
-        outlined
-        dense
-      />
+      <v-text-field label="Username" prepend-inner-icon="mdi-account" v-model="username" outlined dense />
+      <v-text-field label="Password" type="password" prepend-inner-icon="mdi-lock" v-model="password" outlined dense />
 
       <v-btn color="primary" block large class="mt-2" @click="fakeLogin">
         Login
@@ -42,10 +29,12 @@
         <v-icon left>mdi-google</v-icon>
         Continue with Google
       </v-btn>
-      <v-btn color="black" dark block large @click="loginWith('github')">
-        <v-icon left>mdi-github</v-icon>
-        Continue with GitHub
+      
+      <v-btn color="blue darken-4" dark block large @click="loginWith('facebook')">
+        <v-icon left>mdi-facebook</v-icon>
+        Continue with Facebook
       </v-btn>
+
     </v-card>
   </div>
 </template>
