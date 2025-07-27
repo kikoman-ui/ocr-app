@@ -46,7 +46,11 @@ export default {
   data() {
     return {
       username: '',
-      password: ''
+      password: '',
+      users:{
+        philip: '1234',
+        alvin: '1234'
+      }
     }
   },
   methods: {
@@ -54,7 +58,15 @@ export default {
       this.$auth.loginWith(provider)
     },
     fakeLogin() {
-      alert(`Please login with Google or Github below`)
+      const user = this.username.trim().toLowerCase();
+      const pass = this.password;
+
+      if (this.users[user] && this.users[user] == pass){
+        this.$router.push('/tesseract');
+      }else {
+        alert(`Invalid username/ password or  login with Google or Github below`)
+      }
+      
     }
   }
 }
